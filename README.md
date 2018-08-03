@@ -87,5 +87,6 @@ export default {
   }
 }
 ```
+* 这里有一个坑：在使用iview中的clo标签时会报错，已经修改eslint语言检查，若使用vscode时候还需要在首选项----》设置---》"vetur.validation.template": false
 
 * 后续发现问题会及时更新项目构建
