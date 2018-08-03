@@ -67,4 +67,25 @@ head () {
   }
 }
 ```
+* iview放弃按需引用（原因是作用不大，全局引用这样更加方便对这个库的使用），如需要按需引入，按照一下操作即可：
+
+```js
+yarn add babel-plugin-import -D // 安装babel-plugin-import
+
+// .babelrc 根目录下新建babel文件
+{
+  "plugins": [["import", {
+    "libraryName": "iview",
+    "libraryDirectory": "src/components"
+  }]]
+}
+// 引用
+import { Button } from 'iview'
+export default {
+  components: {
+    Button
+  }
+}
+```
+
 * 后续发现问题会及时更新项目构建
