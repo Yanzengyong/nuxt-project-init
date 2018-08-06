@@ -4,3 +4,14 @@
 .page-enter, .page-leave-active {
   opacity: 0;
 }
+@keyframes ani-demo-spin {
+  from { transform: rotate(0deg);}
+  50%  { transform: rotate(180deg);}
+  to   { transform: rotate(360deg);}
+}
+.demo-spin-icon-load{
+  animation: ani-demo-spin 1s linear infinite;
+}
+.login-loading-style{
+  font-size: 18px;
+}

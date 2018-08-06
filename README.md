@@ -33,30 +33,45 @@ $ yarn generate # or npm run generate
 ```js
 import request from 'service'
 // get request
-testRequestGet: async ({ commit }, payload) => {
-  let params = {}
-  try {
-    let data = await request.get(/* 地址 */ , params)
-    commit({
-      type: 'setTestData',
-      data: data
-    })
-  } catch (error) {
-    console.log(error)
+testRequest ({ commit }, payload) {
+  let params = {
+
   }
+  return new Promise((resolve, reject) => {
+    (async () => {
+      try {
+        let data = await request.get(/* 地址 */ , params)
+        commit({
+          type: 'authInfo',
+          data: data.data
+        })
+        resolve(data)
+      } catch (error) {
+        reject(error)
+      }
+    })()
+  })
 }
 // post request
-testRequestPost: async ({ commit }, payload) => {
-  let params = {}
-  try {
-    let data = await request.post(/* 地址 */ , params)
-    commit({
-      type: 'setTestData',
-      data: data
-    })
-  } catch (error) {
-    console.log(error)
+testRequest ({ commit }, payload) {
+  let params = {
+    username: 'yzy123456',
+    password: '123456'
   }
+  return new Promise((resolve, reject) => {
+    (async () => {
+      try {
+        let data = await request.post(/* 地址 */ , params)
+        commit({
+          type: 'authInfo',
+          data: data.data
+        })
+        resolve(data)
+      } catch (error) {
+        reject(error)
+      }
+    })()
+  })
 }
 ```
 * document.title通过.vue文件中的

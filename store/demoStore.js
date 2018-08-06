@@ -1,7 +1,7 @@
 import request from 'service'
 
 const requestUrl = {
-  testUrl: 'test001',
+  testUrl: 'bins/vcu54',
   prodUrl: 'prod001'
 }
 
@@ -15,7 +15,7 @@ const getters = {
 }
 
 const mutations = {
-  setTestData (state, payload) {
+  authInfo (state, payload) {
     state.testData = payload.data
   },
   increment (state, payload) {
@@ -24,17 +24,29 @@ const mutations = {
 }
 
 const actions = {
-  testRequestGet: async ({ commit }, payload) => {
-    let params = {}
-    try {
-      let data = await request.get(requestUrl.testUrl, params)
-      commit({
-        type: 'setTestData',
-        data: data
-      })
-    } catch (error) {
-      console.log(error)
+  nuxtServerInit ({commit}, { req }) {
+    if (req.session && req.session.user) {
+      commit('user', req.session.user)
     }
+  },
+  testRequest ({ commit }, payload) {
+    let params = {
+
+    }
+    return new Promise((resolve, reject) => {
+      (async () => {
+        try {
+          let data = await request.get(requestUrl.testUrl)
+          commit({
+            type: 'authInfo',
+            data: data.data
+          })
+          resolve(data)
+        } catch (error) {
+          console.log(error)
+        }
+      })()
+    })
   }
 }
 

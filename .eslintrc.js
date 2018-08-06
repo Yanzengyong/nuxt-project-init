@@ -34,6 +34,7 @@ module.exports = {
     "semi": [2, "never"],
     // "unix" (默认) 强制使用 Unix 换行符： \n。
     "linebreak-style": [2, "unix"],
-    "vue/no-parsing-error": [2, {"x-invalid-end-tag": false}]
+    "vue/no-parsing-error": [2, {"x-invalid-end-tag": false}],
+    "vue/html-self-closing": 0
   }
 }

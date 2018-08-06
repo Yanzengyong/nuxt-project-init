@@ -7,7 +7,7 @@
     <div
       @click="routerTest"
       class="btn">
-      我是一个按钮
+      点击获取作者信息
     </div>
   </section>
 </template>
@@ -24,11 +24,35 @@ export default {
     Logo
   },
   created () {
-
   },
   methods: {
     routerTest () {
-      this.$router.push({path: 'demo'})
+      this.$Spin.show(this.renderLoadingFn())
+      this.$store.dispatch('testRequest')
+      .then((e) => {
+        if (e && e.status === 200) {
+          this.$Spin.hide()
+          this.$router.push({path: 'authInfo'})
+        }
+      })
+    },
+    renderLoadingFn () {
+      return {
+        render: (h) => {
+          return h('div', [
+            h('Icon', {
+              'class': 'demo-spin-icon-load',
+              props: {
+                type: 'ios-loading',
+                size: 30
+              }
+            }),
+            h('div', {
+              'class': 'login-loading-style'
+            }, 'Login...')
+          ])
+        }
+      }
     }
   }
 }

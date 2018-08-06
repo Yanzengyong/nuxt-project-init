@@ -5,15 +5,15 @@ export default {
   headers: {
     post: {
       'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
-    },
-    'X-Requested-With': 'XMLHttpRequest'
+    }
+    // 'X-Requested-With': 'XMLHttpRequest'
   },
   // `baseURL` 将自动加在 `url` 前面，除非 `url` 是一个绝对 URL
-  baseURL: 'https://www.zhuminsheng.com/api/',
+  baseURL: 'https://api.myjson.com/',
   // 超时设置
   timeout: 10000,
   // 跨域是否带token
-  withCredentials: true,
+  withCredentials: false,
   // 响应的数据格式 json/blob/document/arraybuffer/text/stream
   responseType: 'json',
   // `xsrfCookieName` 是用作 xsrf token 的值的cookie的名称
