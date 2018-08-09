@@ -34,13 +34,16 @@ export default {
           this.$Spin.hide()
           this.$router.push({path: 'authInfo'})
         }
-      }, (e) => {
-        this.$Spin.hide()
-        this.$Message.error({
-          content: '请求超时，请检查网络',
-          duration: 0,
-          closable: true
-        })
+      }, (error) => {
+        if (error.code === 'ECONNABORTED' && error.message.indexOf('timeout') !== -1 && !error.config._retry) {
+          // 我在这里重新请求
+          this.$Spin.hide()
+          this.$Message.error({
+            content: '请求超时，请检查网络',
+            duration: 0,
+            closable: true
+          })
+        }
       })
     },
     renderLoadingFn () {
