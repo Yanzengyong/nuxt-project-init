@@ -25,6 +25,24 @@ export default {
   },
   created () {
   },
+  // 一个可以在组件渲染之前做异步操作的函数 可以看为是可以做异步操作的beforeRouteEnter
+  asyncData (context) {
+    // 制定错误类型，和错误提示
+    // context.error({
+    //   statusCode: 404,
+    //   message: 'any error for message'
+    // })
+    // return {
+    //   name: `我就是${context.store.state.DemoStore.loginData.name}`
+    // }
+    // 可以是异步操作，需返回promise
+    // return new Promise((resolve) => {
+    //   setTimeout(() => {
+    //     resolve(context.redirect('/tabChange'))
+    //     resolve({name: '双击666'})
+    //   }, 3000)
+    // })
+  },
   methods: {
     routerTest () {
       this.$Spin.show(this.renderLoadingFn())
