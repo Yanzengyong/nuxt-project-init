@@ -7,7 +7,7 @@ const service = axios.create(config)
 // get 传参格式化
 service.interceptors.request.use(
   config => {
-    if (config.method === 'get') config.params = qs.stringify(config.params)
+    if (config.method === 'post') config.data = qs.stringify(config.data)
     return config
   },
   error => {

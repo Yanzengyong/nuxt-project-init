@@ -38,8 +38,10 @@ export default {
   name: 'NuxtError',
   props: {
     error: {
-      type: String,
-      default: 'error'
+      type: Object,
+      default: () => {
+        return {}
+      }
     }
   },
   head () {
