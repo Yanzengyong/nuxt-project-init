@@ -7,7 +7,8 @@ const requestUrl = {
 
 const state = {
   testData: '',
-  count: 0
+  count: 0,
+  menuSelectName: '第一导航-用户信息'
 }
 
 const getters = {
